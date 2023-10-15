@@ -22,7 +22,7 @@ $(document).ready(function () {
 
   // Check for the existence of the Splide slider and its required child element
   var $slider = $(".testimonials-slider");
-  if ($slider.find(".splide__list").length) {
+  if ($slider.length && $slider.find(".splide__list").length) {
     var splide = new Splide(".testimonials-slider", {
       type: "loop",
       perPage: 2,
@@ -41,6 +41,17 @@ $(document).ready(function () {
   if ($grid.length) {
     sortModulesGrid($grid);
   }
+
+  $(".tabs-menu .tab-link").on("click", function () {
+    var $thisTab = $(this);
+    var $parentMenu = $thisTab.closest(".tabs-menu");
+
+    // Calculate the position of the clicked tab-link relative to its parent
+    var position = $thisTab.position().left;
+
+    // Smoothly animate the scrollLeft property of the tabs-menu to the clicked tab-link
+    $parentMenu.animate({ scrollLeft: position }, 200); // 400ms duration for the animation
+  });
 });
 
 function sortModulesGrid($grid) {
