@@ -57,7 +57,7 @@ $(document).ready(function () {
     }
 
     // Smoothly animate the scrollLeft property of the tabs-menu to the clicked tab-link
-    $parentMenu.animate({ scrollLeft: position }, 200);
+    $parentMenu.animate({ scrollLeft: position }, 300);
   });
 
   $(".main-menu_button").on("click", function () {
