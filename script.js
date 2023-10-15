@@ -52,6 +52,10 @@ $(document).ready(function () {
     // Smoothly animate the scrollLeft property of the tabs-menu to the clicked tab-link
     $parentMenu.animate({ scrollLeft: position }, 200); // 400ms duration for the animation
   });
+
+  $(".main-menu_button").on("click", function () {
+    $("body").toggleClass("no-scroll");
+  });
 });
 
 function sortModulesGrid($grid) {
