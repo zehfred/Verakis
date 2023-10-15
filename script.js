@@ -46,11 +46,18 @@ $(document).ready(function () {
     var $thisTab = $(this);
     var $parentMenu = $thisTab.closest(".tabs-menu");
 
-    // Calculate the position of the clicked tab-link relative to its parent
     var position = $thisTab.position().left;
+    var tabWidth = $thisTab.outerWidth();
+    var menuWidth = $parentMenu.width();
+    var currentScrollLeft = $parentMenu.scrollLeft();
+
+    // Adjust position for items that won't be fully visible
+    if (position + tabWidth > menuWidth + currentScrollLeft) {
+      position = position - menuWidth + tabWidth;
+    }
 
     // Smoothly animate the scrollLeft property of the tabs-menu to the clicked tab-link
-    $parentMenu.animate({ scrollLeft: position }, 200); // 400ms duration for the animation
+    $parentMenu.animate({ scrollLeft: position }, 200);
   });
 
   $(".main-menu_button").on("click", function () {
