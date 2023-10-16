@@ -29,6 +29,11 @@ $(document).ready(function () {
       perMove: 1,
       gap: "2rem",
       pagination: false,
+      breakpoints: {
+        767: {
+          perPage: 1,
+        },
+      },
     });
     splide.mount();
   } else {
