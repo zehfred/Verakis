@@ -41,6 +41,20 @@ $(document).ready(function () {
     $(".section_testimonials").remove();
   }
 
+  var generalSlider = new Splide(".general-slider", {
+    type: "loop",
+    perPage: 4,
+    perMove: 1,
+    gap: "2rem",
+    pagination: false,
+    breakpoints: {
+      767: {
+        perPage: 1,
+      },
+    },
+  });
+  generalSlider.mount();
+
   // Check and sort modules-grid
   var $grid = $(".modules-grid");
   if ($grid.length) {
@@ -68,6 +82,9 @@ $(document).ready(function () {
   $(".main-menu_button").on("click", function () {
     $("body").toggleClass("no-scroll");
   });
+
+  var currentYear = new Date().getFullYear();
+  $(".copyright-year").text(currentYear);
 });
 
 function sortModulesGrid($grid) {
