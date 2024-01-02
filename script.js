@@ -40,20 +40,22 @@ $(document).ready(function () {
     // Remove the section_testimonials from the DOM if there's no splide__list
     $(".section_testimonials").remove();
   }
-
-  var generalSlider = new Splide(".general-slider", {
-    type: "loop",
-    perPage: 4,
-    perMove: 1,
-    gap: "2rem",
-    pagination: false,
-    breakpoints: {
-      767: {
-        perPage: 1,
+  var $generalSlider = $(".general-slider");
+  if ($generalSlider.length && $generalSlider.find(".splide__list").length) {
+    var splideGeneral = new Splide(".general-slider", {
+      type: "loop",
+      perPage: 4,
+      perMove: 1,
+      gap: "2rem",
+      pagination: false,
+      breakpoints: {
+        767: {
+          perPage: 1,
+        },
       },
-    },
-  });
-  generalSlider.mount();
+    });
+    splideGeneral.mount();
+  }
 
   // Check and sort modules-grid
   var $grid = $(".modules-grid");
@@ -85,6 +87,12 @@ $(document).ready(function () {
 
   var currentYear = new Date().getFullYear();
   $(".copyright-year").text(currentYear);
+
+  // If 'section_related-courses' does not contain 'courses-list', remove it
+  if (!$(".section_related-courses .courses-list").length) {
+    $(".section_related-courses").next(".spacer").remove(); // This will remove the '.spacer' element
+    $(".section_related-courses").remove(); // This continues to remove the '.section_related-courses' as before
+  }
 });
 
 function sortModulesGrid($grid) {
