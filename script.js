@@ -119,7 +119,7 @@ function sortModulesGrid($grid) {
 }
 
 function sortTeachers() {
-  var $peopleContainer = $(".course-team_people");
+  var $peopleContainer = $(".course-team_people.teachers");
   var $people = $peopleContainer.find(".person");
 
   $people.sort(function (a, b) {
