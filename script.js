@@ -120,7 +120,7 @@ function sortModulesGrid($grid) {
 
 function sortTeachers() {
   var $peopleContainer = $(".course-team_people");
-  var $people = $peopleContainer.find(".fv-person");
+  var $people = $peopleContainer.find(".person");
 
   $people.sort(function (a, b) {
     var nameA = $(a).find(".person_name").text().trim().toUpperCase(); // Get the name from .person_name and convert to uppercase
