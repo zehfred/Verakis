@@ -63,7 +63,7 @@ $(document).ready(function () {
     sortModulesGrid($grid);
   }
 
-  var $peopleGrid = $(".course-team_people");
+  var $peopleGrid = $(".course-team_people.teachers");
   if ($peopleGrid.length) {
     sortTeachers($peopleGrid);
   }
