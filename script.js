@@ -63,6 +63,11 @@ $(document).ready(function () {
     sortModulesGrid($grid);
   }
 
+  var $peopleGrid = $(".course-team_people");
+  if ($peopleGrid.length) {
+    sortTeachers($peopleGrid);
+  }
+
   $(".tabs-menu .tab-link").on("click", function () {
     var $thisTab = $(this);
     var $parentMenu = $thisTab.closest(".tabs-menu");
@@ -111,4 +116,24 @@ function sortModulesGrid($grid) {
       return dateA - dateB;
     })
     .appendTo($grid);
+}
+
+function sortTeachers() {
+  var $peopleContainer = $(".course-team_people");
+  var $people = $peopleContainer.find(".fv-person");
+
+  $people.sort(function (a, b) {
+    var nameA = $(a).find(".person_name").text().trim().toUpperCase(); // Get the name from .person_name and convert to uppercase
+    var nameB = $(b).find(".person_name").text().trim().toUpperCase(); // Same for the second element
+
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0; // names must be equal
+  });
+
+  $peopleContainer.empty().append($people); // Clear the container and append the sorted divs
 }
